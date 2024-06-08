@@ -1,5 +1,3 @@
-
-
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -15,15 +13,14 @@ android {
         applicationId = "com.fit.feast"
         minSdk = 24
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 2
+        versionName = "1.2"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         hilt {
             enableAggregatingTask = false
         }
     }
-
     buildTypes {
         debug {
             isMinifyEnabled = false
@@ -49,12 +46,13 @@ android {
         viewBinding = true
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_18
-        targetCompatibility = JavaVersion.VERSION_18
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "18"
+        jvmTarget = "17"
     }
+
 }
 
 dependencies {
@@ -69,14 +67,19 @@ dependencies {
     // paging 3 dependencies
     implementation(libs.androidx.paging.runtime.ktx)
 
+
+    // sdp and ssp
+    implementation(libs.ssp.android)
+    implementation(libs.sdp.android)
+
     // lifecycle dependencies
-    implementation(libs.androidx.lifecycle.extensions)
+//    implementation(libs.androidx.lifecycle.extensions)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.lifecycle.livedata.ktx)
 
 // Hilt dependencies
     implementation(libs.hilt.android)
-    implementation(libs.hilt.android.compiler)
+    ksp(libs.hilt.android.compiler)
 
     // fragment navigation
     implementation (libs.androidx.navigation.fragment.ktx)

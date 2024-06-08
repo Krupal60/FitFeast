@@ -4,6 +4,7 @@ package com.fit.feast.data.workouts.repository
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
+import com.fit.feast.data.workouts.ByBodyPartExerciesPagingSource
 import com.fit.feast.data.workouts.Exercises
 import com.fit.feast.data.workouts.ExercisesPagingSource
 import com.fit.feast.domain.FItRepository
@@ -50,5 +51,20 @@ class FitRepositoryImpl @Inject constructor(
             }
 
         }
+    }
+
+    override fun byBodyParts(): Flow<PagingData<Exercises>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = 1,
+            prefetchDistance = 5,
+            enablePlaceholders = false,
+            initialLoadSize = 1,
+            maxSize = 1000
+        ),
+            pagingSourceFactory = {
+                ByBodyPartExerciesPagingSource(apiService)
+            }
+        ).flow
     }
 }

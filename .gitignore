@@ -33,3 +33,22 @@ util/FitApiConstants.kt
 
 # Android Profiling
 *.hprof
+/app/src/main/java/com/fit/feast/util/FitApiConstants.kt
+/app/src/main/res/drawable/human_arm.xml
+/app/src/main/res/drawable/human_back.xml
+/app/src/main/res/drawable/human_bicep.xml
+/app/src/main/res/drawable/human_body.xml
+/app/src/main/res/drawable/human_body_parts.xml
+/app/src/main/res/drawable/human_cardio.xml
+/app/src/main/res/drawable/human_chest_male.xml
+/app/src/main/res/drawable/human_knee.xml
+/app/src/main/res/drawable/human_lower_leg.xml
+/app/src/main/res/drawable/human_neck.xml
+/app/src/main/res/drawable/human_shoulder.xml
+/app/src/main/res/drawable/human_waist.xml
+/app/src/main/res/drawable/human_workout.xml
+/app/src/main/res/drawable/pilates.xml
+/app/src/main/res/drawable/recipe.xml
+/app/src/main/res/drawable/recipe_selected.xml
+/app/src/main/res/drawable/workout.xml
+/app/src/main/res/drawable/workout_selected.xml
