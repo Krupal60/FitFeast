@@ -2,6 +2,11 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="Workout"
-        android:icon="@drawable/workout"/>
+    <item android:title="@string/workouts"
+        android:id="@+id/workoutFragment"
+        android:icon="@drawable/workout_menu_icon"/>
+
+    <item android:title="@string/recipes"
+        android:id="@+id/recipesFragment"
+        android:icon="@drawable/recipe_menu_icon"/>
 </menu>
