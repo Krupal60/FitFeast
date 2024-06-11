@@ -4,15 +4,17 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.OnClickListener
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import com.fit.feast.R
 import com.fit.feast.databinding.FragmentHomeScreenBinding
 import com.google.android.material.search.SearchView
 
 
-class WorkOutFragment : Fragment() {
+class WorkOutFragment : Fragment(),OnClickListener {
 
     var _binding : FragmentHomeScreenBinding? = null
     val binding get() = _binding!!
@@ -48,13 +50,13 @@ class WorkOutFragment : Fragment() {
                     }
                 }
             )
-         searchView.addTransitionListener { searchView, transitionState, transitionState2 ->
-                  if (transitionState == SearchView.TransitionState.HIDING){
-                      allWorkout.visibility = View.VISIBLE
-                      workoutByParts.visibility = View.VISIBLE
-                      workoutByEquipment.visibility = View.VISIBLE
-                  }
-              }
+            searchView.addTransitionListener { searchView, transitionState, transitionState2 ->
+                if (transitionState == SearchView.TransitionState.HIDING) {
+                    allWorkout.visibility = View.VISIBLE
+                    workoutByParts.visibility = View.VISIBLE
+                    workoutByEquipment.visibility = View.VISIBLE
+                }
+            }
             searchView.setupWithSearchBar(searchBar)
             searchView
                 .editText
@@ -63,18 +65,40 @@ class WorkOutFragment : Fragment() {
                     searchView.hide()
                     false
                 }
-            searchBar.setOnClickListener {
-                allWorkout.visibility = View.GONE
-                workoutByParts.visibility = View.GONE
-                workoutByEquipment.visibility = View.GONE
-               searchView.show()
-            }}
+            searchBar.setOnClickListener(this@WorkOutFragment)
+            allWorkout.setOnClickListener(this@WorkOutFragment)
+            workoutByParts.setOnClickListener(this@WorkOutFragment)
+            workoutByEquipment.setOnClickListener(this@WorkOutFragment)
+        }
     }
 
 
     override fun onDestroy() {
         _binding = null
         super.onDestroy()
+    }
+
+    override fun onClick(v: View?) {
+        binding.apply {
+            when(v?.id){
+                searchBar.id ->{
+                    allWorkout.visibility = View.GONE
+                    workoutByParts.visibility = View.GONE
+                    workoutByEquipment.visibility = View.GONE
+                    searchView.show()
+                }
+                allWorkout.id ->{
+
+                }
+                workoutByParts.id->{
+
+                }
+                workoutByEquipment.id->{
+
+                }
+            }
+        }
+
     }
 
 }
