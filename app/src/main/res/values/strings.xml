@@ -7,5 +7,6 @@
     <string name="search">Search</string>
     <string name="all_workout">All Workout</string>
     <string name="by_body_parts">By Body Parts</string>
-    <string name="by_equipment">By equipment</string>
+    <string name="by_equipment">By Equipment</string>
+    <string name="by_target">By Target</string>
 </resources>

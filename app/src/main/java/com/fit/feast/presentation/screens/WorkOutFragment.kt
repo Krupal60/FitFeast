@@ -7,13 +7,15 @@ import android.view.View.OnClickListener
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.fit.feast.R
 import com.fit.feast.databinding.FragmentHomeScreenBinding
 import com.google.android.material.search.SearchView
 
 
-class WorkOutFragment : Fragment(),OnClickListener {
+class WorkOutFragment : Fragment(), OnClickListener {
 
-    private var _binding : FragmentHomeScreenBinding? = null
+    private var _binding: FragmentHomeScreenBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -21,7 +23,7 @@ class WorkOutFragment : Fragment(),OnClickListener {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        _binding = FragmentHomeScreenBinding.inflate(inflater,container,false)
+        _binding = FragmentHomeScreenBinding.inflate(inflater, container, false)
         return _binding!!.root
     }
 
@@ -65,6 +67,7 @@ class WorkOutFragment : Fragment(),OnClickListener {
             searchBar.setOnClickListener(this@WorkOutFragment)
             allWorkout.setOnClickListener(this@WorkOutFragment)
             workoutByParts.setOnClickListener(this@WorkOutFragment)
+            workoutByTarget.setOnClickListener(this@WorkOutFragment)
             workoutByEquipment.setOnClickListener(this@WorkOutFragment)
         }
     }
@@ -77,21 +80,30 @@ class WorkOutFragment : Fragment(),OnClickListener {
 
     override fun onClick(v: View?) {
         binding.apply {
-            when(v?.id){
-                searchBar.id ->{
+            when (v?.id) {
+                searchBar.id -> {
                     allWorkout.visibility = View.GONE
                     workoutByParts.visibility = View.GONE
                     workoutByEquipment.visibility = View.GONE
                     searchView.show()
                 }
-                allWorkout.id ->{
+
+                allWorkout.id -> {
+                    findNavController().navigate(R.id.action_workoutFragment_to_allWorkoutFragment)
+                }
+
+                workoutByParts.id -> {
+                    findNavController().navigate(R.id.action_workoutFragment_to_byBodyPartsFragment)
 
                 }
-                workoutByParts.id->{
+
+                workoutByTarget.id -> {
+                    findNavController().navigate(R.id.action_workoutFragment_to_byTargetsFragment)
 
                 }
-                workoutByEquipment.id->{
 
+                workoutByEquipment.id -> {
+                    findNavController().navigate(R.id.action_workoutFragment_to_byEquipmentsFragment)
                 }
             }
         }

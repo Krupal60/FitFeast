@@ -19,6 +19,46 @@
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:launchSingleTop="true" />
+        <action
+            android:id="@+id/action_workoutFragment_to_allWorkoutFragment"
+            app:destination="@id/allWorkoutFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/workoutFragment"
+
+            />
+        <action
+            android:id="@+id/action_workoutFragment_to_byBodyPartsFragment"
+            app:destination="@id/byBodyPartsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/workoutFragment"
+            />
+        <action
+            android:id="@+id/action_workoutFragment_to_byEquipmentsFragment"
+            app:destination="@id/byEquipmentsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/workoutFragment"
+            />
+        <action
+            android:id="@+id/action_workoutFragment_to_byTargetsFragment"
+            app:destination="@id/byTargetsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/workoutFragment"/>
     </fragment>
     <fragment
         android:id="@+id/recipesFragment"
@@ -36,4 +76,24 @@
             app:popUpTo="@id/workoutFragment"
             app:popUpToInclusive="true" />
     </fragment>
+    <fragment
+        android:id="@+id/allWorkoutFragment"
+        android:name="com.fit.feast.presentation.screens.AllWorkoutFragment"
+        android:label="fragment_all_workout"
+        tools:layout="@layout/fragment_all_workout" />
+    <fragment
+        android:id="@+id/byBodyPartsFragment"
+        android:name="com.fit.feast.presentation.screens.ByBodyPartsFragment"
+        android:label="fragment_by_body_parts"
+        tools:layout="@layout/fragment_by_body_parts" />
+    <fragment
+        android:id="@+id/byEquipmentsFragment"
+        android:name="com.fit.feast.presentation.screens.ByEquipmentsFragment"
+        android:label="fragment_by_equipments"
+        tools:layout="@layout/fragment_by_equipments" />
+    <fragment
+        android:id="@+id/byTargetsFragment"
+        android:name="com.fit.feast.presentation.screens.ByTargetsFragment"
+        android:label="fragment_by_targets"
+        tools:layout="@layout/fragment_by_targets" />
 </navigation>

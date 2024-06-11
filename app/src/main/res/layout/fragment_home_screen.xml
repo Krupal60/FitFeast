@@ -65,7 +65,7 @@
                     android:padding="5dp"
                     android:text="@string/all_workout"
                     android:textAlignment="center"
-                    android:textSize="@dimen/_14ssp"
+                    android:textSize="@dimen/_15ssp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -84,7 +84,7 @@
             android:layout_marginEnd="6dp"
             app:cardCornerRadius="10dp"
             app:cardElevation="8dp"
-            app:layout_constraintEnd_toStartOf="@+id/workout_by_equipment"
+            app:layout_constraintEnd_toStartOf="@+id/workout_by_target"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@id/guideline_Start"
             app:layout_constraintTop_toBottomOf="@+id/all_workout"
@@ -118,7 +118,7 @@
                     android:padding="5dp"
                     android:text="@string/by_body_parts"
                     android:textAlignment="center"
-                    android:textSize="@dimen/_14ssp"
+                    android:textSize="@dimen/_15ssp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -129,7 +129,7 @@
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/workout_by_equipment"
+            android:id="@+id/workout_by_target"
             style="@style/Widget.Material3.CardView.Outlined"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -139,7 +139,6 @@
             app:layout_constraintBottom_toBottomOf="@+id/workout_by_parts"
             app:layout_constraintEnd_toEndOf="@id/guideline_End"
             app:layout_constraintEnd_toStartOf="@+id/guideline_End"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/workout_by_parts"
             app:layout_constraintTop_toTopOf="@+id/workout_by_parts"
             app:strokeColor="?attr/colorOutline"
@@ -156,7 +155,7 @@
                     android:id="@+id/image_view3"
                     android:layout_width="@dimen/_100sdp"
                     android:layout_height="@dimen/_120sdp"
-                    android:src="@drawable/pilates"
+                    android:src="@drawable/human_body"
                     android:tint="?attr/colorSurfaceInverse"
                     app:layout_constraintBottom_toTopOf="@+id/text_view3"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -169,9 +168,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
                     android:padding="5dp"
-                    android:text="@string/by_equipment"
+                    android:text="@string/by_target"
                     android:textAlignment="center"
-                    android:textSize="@dimen/_14ssp"
+                    android:textSize="@dimen/_15ssp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -180,7 +179,52 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/workout_by_equipment"
+            style="@style/Widget.Material3.CardView.Outlined"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_165sdp"
+            android:layout_marginTop="14dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_End"
+            app:layout_constraintStart_toStartOf="@+id/guideline_Start"
+            app:layout_constraintTop_toBottomOf="@+id/workout_by_parts"
+            app:strokeColor="?attr/colorOutline"
+            app:strokeWidth="1dp">
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/image_view4"
+                    android:layout_width="@dimen/_110sdp"
+                    android:layout_height="@dimen/_120sdp"
+                    android:src="@drawable/pilates"
+                    android:tint="?attr/colorSurfaceInverse"
+                    app:layout_constraintBottom_toTopOf="@+id/text_view4"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/text_view4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:padding="5dp"
+                    android:text="@string/by_equipment"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/_15ssp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
         <com.google.android.material.search.SearchBar
             android:id="@+id/search_bar"
             style="@style/ShapeAppearanceOverlay.Material3.SearchBar"

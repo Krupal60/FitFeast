@@ -1,6 +1,7 @@
 package com.fit.feast.presentation
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -57,6 +58,11 @@ class MainActivity : AppCompatActivity() {
                 val isAtHome = destination.hierarchy.any { it.id == R.id.workoutFragment }
                 if (isAtHome) {
                     binding.bottomNav.selectedItemId = R.id.workoutFragment
+                }
+                if( destination.hierarchy.any { it.id != R.id.workoutFragment } || destination.hierarchy.any { it.id != R.id.recipesFragment }){
+                    binding.bottomNav.visibility = View.GONE
+                }else{
+                    binding.bottomNav.visibility = View.VISIBLE
                 }
             }
         }
