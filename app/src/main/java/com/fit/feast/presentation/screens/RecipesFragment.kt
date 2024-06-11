@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment
 import com.fit.feast.databinding.FragmentRecipesBinding
 
 class RecipesFragment : Fragment() {
-   var _binding: FragmentRecipesBinding? = null
-    val binding get() = _binding!!
+   private var _binding: FragmentRecipesBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

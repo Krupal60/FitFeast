@@ -1,23 +1,20 @@
 package com.fit.feast.presentation.screens
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import com.fit.feast.R
 import com.fit.feast.databinding.FragmentHomeScreenBinding
 import com.google.android.material.search.SearchView
 
 
 class WorkOutFragment : Fragment(),OnClickListener {
 
-    var _binding : FragmentHomeScreenBinding? = null
-    val binding get() = _binding!!
+    private var _binding : FragmentHomeScreenBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
