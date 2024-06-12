@@ -42,6 +42,7 @@ class WorkOutFragment : Fragment(), OnClickListener {
                             allWorkout.visibility = View.VISIBLE
                             workoutByParts.visibility = View.VISIBLE
                             workoutByEquipment.visibility = View.VISIBLE
+                            searchBar.visibility = View.VISIBLE
                         }
                         if (searchView.currentTransitionState == SearchView.TransitionState.HIDDEN) {
                             remove()
@@ -55,14 +56,13 @@ class WorkOutFragment : Fragment(), OnClickListener {
                     allWorkout.visibility = View.VISIBLE
                     workoutByParts.visibility = View.VISIBLE
                     workoutByEquipment.visibility = View.VISIBLE
+                    searchBar.visibility = View.VISIBLE
                 }
             }
             searchView.setupWithSearchBar(searchBar)
             searchView
                 .editText
                 .setOnEditorActionListener { v, actionId, event ->
-                    searchBar.setText(searchView.text)
-                    searchView.hide()
                     false
                 }
             searchBar.setOnClickListener(this@WorkOutFragment)
@@ -83,6 +83,7 @@ class WorkOutFragment : Fragment(), OnClickListener {
         binding.apply {
             when (v?.id) {
                 searchBar.id -> {
+                    searchBar.visibility = View.GONE
                     allWorkout.visibility = View.GONE
                     workoutByParts.visibility = View.GONE
                     workoutByEquipment.visibility = View.GONE

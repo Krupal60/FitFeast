@@ -243,8 +243,8 @@
 
         <com.google.android.material.search.SearchView
             android:id="@+id/search_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:hint="@string/search"
             app:layout_anchor="@id/search_bar"
             app:layout_constraintBottom_toBottomOf="parent"
