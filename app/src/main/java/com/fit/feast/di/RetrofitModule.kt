@@ -27,10 +27,10 @@ object RetrofitModule {
             .baseUrl(BASE_URL)
             .client(OkHttpClient
                 .Builder()
-                .callTimeout(60, TimeUnit.SECONDS)
-                .readTimeout(60, TimeUnit.SECONDS)
-                .writeTimeout(60, TimeUnit.SECONDS)
-                .connectTimeout(60, TimeUnit.SECONDS)
+                .callTimeout(90, TimeUnit.SECONDS)
+                .readTimeout(90, TimeUnit.SECONDS)
+                .writeTimeout(90, TimeUnit.SECONDS)
+                .connectTimeout(90, TimeUnit.SECONDS)
                 .addInterceptor {
                     val request: Request.Builder = it.request().newBuilder()
                     request.addHeader("X-RapidAPI-Key", X_RapidAPI_Key)

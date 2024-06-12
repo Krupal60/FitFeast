@@ -61,7 +61,8 @@ class MainActivity : AppCompatActivity() {
                 }
                 if( destination.hierarchy.any { it.id != R.id.workoutFragment } || destination.hierarchy.any { it.id != R.id.recipesFragment }){
                     binding.bottomNav.visibility = View.GONE
-                }else{
+                }
+                if( destination.hierarchy.any { it.id == R.id.workoutFragment } || destination.hierarchy.any { it.id == R.id.recipesFragment }){
                     binding.bottomNav.visibility = View.VISIBLE
                 }
             }

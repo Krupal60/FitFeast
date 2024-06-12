@@ -11,8 +11,9 @@ import androidx.navigation.fragment.findNavController
 import com.fit.feast.R
 import com.fit.feast.databinding.FragmentHomeScreenBinding
 import com.google.android.material.search.SearchView
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class WorkOutFragment : Fragment(), OnClickListener {
 
     private var _binding: FragmentHomeScreenBinding? = null
