@@ -42,6 +42,7 @@ class WorkOutFragment : Fragment(), OnClickListener {
                             allWorkout.visibility = View.VISIBLE
                             workoutByParts.visibility = View.VISIBLE
                             workoutByEquipment.visibility = View.VISIBLE
+                            workoutByTarget.visibility = View.VISIBLE
                             searchBar.visibility = View.VISIBLE
                         }
                         if (searchView.currentTransitionState == SearchView.TransitionState.HIDDEN) {
@@ -56,6 +57,7 @@ class WorkOutFragment : Fragment(), OnClickListener {
                     allWorkout.visibility = View.VISIBLE
                     workoutByParts.visibility = View.VISIBLE
                     workoutByEquipment.visibility = View.VISIBLE
+                    workoutByTarget.visibility = View.VISIBLE
                     searchBar.visibility = View.VISIBLE
                 }
             }
@@ -85,6 +87,7 @@ class WorkOutFragment : Fragment(), OnClickListener {
                 searchBar.id -> {
                     searchBar.visibility = View.GONE
                     allWorkout.visibility = View.GONE
+                    workoutByTarget.visibility = View.GONE
                     workoutByParts.visibility = View.GONE
                     workoutByEquipment.visibility = View.GONE
                     searchView.show()

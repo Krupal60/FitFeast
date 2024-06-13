@@ -35,7 +35,7 @@
                 android:layout_width="match_parent"
               android:layout_marginVertical="15dp"
                 android:tint="?attr/colorSurfaceInverse"
-                android:layout_height="@dimen/_150sdp"
+                android:layout_height="@dimen/_142sdp"
                 android:contentDescription="@string/exercise_image"
                 android:scaleType="fitXY" />
 
