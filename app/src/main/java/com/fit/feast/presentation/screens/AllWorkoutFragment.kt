@@ -81,7 +81,7 @@ class AllWorkoutFragment : Fragment() {
             workoutAdapter.retry()
         }
         backButton.setOnClickListener {
-            requireActivity().onBackPressedDispatcher.onBackPressed()
+            findNavController().popBackStack()
         }
 
         recyclerView.layoutManager =

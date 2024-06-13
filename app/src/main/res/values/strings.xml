@@ -8,8 +8,8 @@
     <string name="all_workout">All Workouts</string>
     <string name="by_body_parts">By Body Parts</string>
     <string name="by_equipment">By Equipment</string>
-    <string name="by_target">By Target</string>
-    <string name="exercise_image">Excercise Image</string>
+    <string name="by_target">By Target Muscle</string>
+    <string name="exercise_image">Exercise Image</string>
     <string name="exercise_name">Exercise Name</string>
     <string name="body_part">Body Part</string>
     <string name="equipment">Equipment</string>

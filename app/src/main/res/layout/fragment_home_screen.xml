@@ -101,6 +101,8 @@
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/image_view2"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="1dp"
                     android:layout_width="@dimen/_100sdp"
                     android:layout_height="@dimen/_120sdp"
                     android:src="@drawable/human_body_parts"
@@ -155,6 +157,8 @@
                     android:id="@+id/image_view3"
                     android:layout_width="@dimen/_100sdp"
                     android:layout_height="@dimen/_120sdp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="1dp"
                     android:src="@drawable/human_body"
                     android:tint="?attr/colorSurfaceInverse"
                     app:layout_constraintBottom_toTopOf="@+id/text_view3"
