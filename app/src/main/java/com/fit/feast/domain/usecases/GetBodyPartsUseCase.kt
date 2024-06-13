@@ -1,9 +1,9 @@
 package com.fit.feast.domain.usecases
 
-import androidx.lifecycle.LiveData
 
 import com.fit.feast.util.RequestState
+import kotlinx.coroutines.flow.Flow
 
 interface GetBodyPartsUseCase {
-    suspend fun execute(): LiveData<RequestState<List<String>>>
+    suspend fun execute(): Flow<RequestState<List<String>>>
 }
