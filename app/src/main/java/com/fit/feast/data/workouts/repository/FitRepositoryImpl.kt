@@ -50,7 +50,7 @@ class FitRepositoryImpl(
                 emit(RequestState.Error("Unexpected Error"))
             }
 
-        }
+        }.flowOn(Dispatchers.IO)
     }
 
     override fun byBodyParts(part: String): Flow<PagingData<Exercises>> {

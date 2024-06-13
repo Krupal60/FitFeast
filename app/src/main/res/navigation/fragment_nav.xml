@@ -59,6 +59,7 @@
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:popUpTo="@id/workoutFragment"/>
+
     </fragment>
     <fragment
         android:id="@+id/recipesFragment"
@@ -80,7 +81,18 @@
         android:id="@+id/allWorkoutFragment"
         android:name="com.fit.feast.presentation.screens.AllWorkoutFragment"
         android:label="fragment_all_workout"
-        tools:layout="@layout/fragment_all_workout" />
+        tools:layout="@layout/fragment_all_workout" >
+        <action
+            android:id="@+id/action_allWorkoutFragment_to_workOutDetailFragment"
+            app:destination="@id/workOutDetailFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/allWorkoutFragment"
+           />
+    </fragment>
     <fragment
         android:id="@+id/byBodyPartsFragment"
         android:name="com.fit.feast.presentation.screens.ByBodyPartsFragment"
@@ -96,4 +108,9 @@
         android:name="com.fit.feast.presentation.screens.ByTargetsFragment"
         android:label="fragment_by_targets"
         tools:layout="@layout/fragment_by_targets" />
+    <fragment
+        android:id="@+id/workOutDetailFragment"
+        android:name="com.fit.feast.WorkOutDetailFragment"
+        android:label="fragment_work_out_detail"
+        tools:layout="@layout/fragment_work_out_detail" />
 </navigation>

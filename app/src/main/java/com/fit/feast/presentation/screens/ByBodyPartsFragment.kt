@@ -6,27 +6,72 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.fit.feast.R
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.fit.feast.databinding.FragmentByBodyPartsBinding
+import com.fit.feast.presentation.adapters.ByBodyPartsAdapter
 import com.fit.feast.presentation.viewmodel.ByBodyPartsViewModel
-
+import com.fit.feast.util.RequestState
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
+@AndroidEntryPoint
 class ByBodyPartsFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = ByBodyPartsFragment()
-    }
-
+    private var _binding: FragmentByBodyPartsBinding? = null
+    private val binding get() = _binding!!
     private val viewModel: ByBodyPartsViewModel by viewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        // TODO: Use the ViewModel
-    }
-
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_by_body_parts, container, false)
+        viewModel.getBodyPartsList()
+        _binding = FragmentByBodyPartsBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.apply {
+            backButton.setOnClickListener {
+                requireActivity().onBackPressedDispatcher.onBackPressed()
+            }
+            recyclerView.layoutManager = GridLayoutManager(requireContext(),2,GridLayoutManager.VERTICAL,false)
+            recyclerView.itemAnimator = DefaultItemAnimator()
+            viewLifecycleOwner.lifecycleScope.launch {
+                viewModel.bodyParts.collect{requestState ->
+                    when(requestState){
+                        is RequestState.Error -> {
+                            recyclerView.visibility = View.GONE
+                            retry.visibility = View.VISIBLE
+                            progressBar.visibility = View.GONE
+                            errorText.visibility = View.VISIBLE
+                        }
+                        RequestState.Idle -> {}
+                        RequestState.Loading -> {
+                            progressBar.visibility = View.VISIBLE
+                        }
+                        is RequestState.Success -> {
+                            progressBar.visibility = View.GONE
+                            retry.visibility = View.GONE
+                            errorText.visibility = View.GONE
+                            recyclerView.adapter = ByBodyPartsAdapter(requestState.data)
+                            recyclerView.visibility = View.VISIBLE
+
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

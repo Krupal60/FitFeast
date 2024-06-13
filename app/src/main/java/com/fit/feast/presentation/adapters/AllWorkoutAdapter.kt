@@ -11,11 +11,11 @@ import com.bumptech.glide.Glide
 import com.fit.feast.data.workouts.Exercises
 import com.fit.feast.databinding.WorkoutCardBinding
 
-class AllWorkoutAdapter :
+class AllWorkoutAdapter(private val onCardClick :(Exercises) -> Unit) :
     PagingDataAdapter<Exercises, AllWorkoutAdapter.WorkoutViewHolder>(WORKOUT_COMPARATOR) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WorkoutViewHolder {
         val binding = WorkoutCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return WorkoutViewHolder(binding)
+        return WorkoutViewHolder(binding,onCardClick)
     }
 
     override fun onBindViewHolder(holder: WorkoutViewHolder, position: Int) {
@@ -25,11 +25,14 @@ class AllWorkoutAdapter :
         holder.bind(workout!!)
     }
 
-    class WorkoutViewHolder(private val binding: WorkoutCardBinding) :
+    class WorkoutViewHolder(private val binding: WorkoutCardBinding, private val onCardClick: (Exercises) -> Unit) :
         RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SetTextI18n")
         fun bind(item: Exercises) {
             binding.apply {
+                cardView.setOnClickListener {
+                    onCardClick(item)
+                }
                 exerciseName.text = item.name
                 equipment.text = "Equipment: ${item.equipment}"
                 bodyPart.text = "Body Part: ${item.bodyPart}"
