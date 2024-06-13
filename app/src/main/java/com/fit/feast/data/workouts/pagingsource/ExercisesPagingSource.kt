@@ -1,7 +1,8 @@
-package com.fit.feast.data.workouts
+package com.fit.feast.data.workouts.pagingsource
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import com.fit.feast.data.workouts.Exercises
 
 import com.fit.feast.network.workouts.FitnessApiService
 import retrofit2.HttpException

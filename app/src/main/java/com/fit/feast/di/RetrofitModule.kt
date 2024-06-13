@@ -1,6 +1,9 @@
 package com.fit.feast.di
 
 import com.fit.feast.data.workouts.repository.FitRepositoryImpl
+import com.fit.feast.data.workouts.usecases.GetBodyPartsUseCaseImpl
+import com.fit.feast.data.workouts.usecases.GetWorkoutByBodyPartUseCaseImpl
+import com.fit.feast.data.workouts.usecases.GetWorkoutUseCaseImpl
 import com.fit.feast.network.workouts.FitnessApiService
 import com.fit.feast.util.FitApiConstants.Companion.BASE_URL
 import com.fit.feast.util.FitApiConstants.Companion.X_RapidAPI_Host
@@ -51,6 +54,23 @@ object RetrofitModule {
     @Singleton
     @Provides
     fun provideRepository(api: FitnessApiService): FitRepositoryImpl = FitRepositoryImpl(api)
+
+
+    @Singleton
+    @Provides
+    fun provideGetWorkoutUseCase(workoutRepository: FitRepositoryImpl): GetWorkoutUseCaseImpl =
+        GetWorkoutUseCaseImpl(workoutRepository)
+
+    @Singleton
+    @Provides
+    fun provideGetWorkoutByBodyPartUseCase(workoutRepository: FitRepositoryImpl): GetWorkoutByBodyPartUseCaseImpl =
+        GetWorkoutByBodyPartUseCaseImpl(workoutRepository)
+
+    @Singleton
+    @Provides
+    fun provideGetBodyPartsUseCase(workoutRepository: FitRepositoryImpl): GetBodyPartsUseCaseImpl =
+        GetBodyPartsUseCaseImpl(workoutRepository)
+
 
 }
 

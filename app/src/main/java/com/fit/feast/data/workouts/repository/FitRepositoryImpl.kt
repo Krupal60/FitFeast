@@ -1,25 +1,24 @@
 package com.fit.feast.data.workouts.repository
 
-
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.liveData
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import androidx.paging.liveData
-import com.fit.feast.data.workouts.ByBodyPartExerciesPagingSource
+import com.fit.feast.data.workouts.pagingsource.ByBodyPartExerciesPagingSource
 import com.fit.feast.data.workouts.Exercises
-import com.fit.feast.data.workouts.ExercisesPagingSource
+import com.fit.feast.data.workouts.pagingsource.ExercisesPagingSource
 import com.fit.feast.domain.FItRepository
 import com.fit.feast.network.workouts.FitnessApiService
 import com.fit.feast.util.RequestState
-import javax.inject.Inject
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 
-class FitRepositoryImpl @Inject constructor(
+class FitRepositoryImpl(
     private val apiService: FitnessApiService
 ) : FItRepository {
 
-    override fun getDataAll(): LiveData<PagingData<Exercises>> {
+    override fun getDataAll(): Flow<PagingData<Exercises>> {
         return Pager(
             config = PagingConfig(
                 pageSize = 1,
@@ -30,11 +29,11 @@ class FitRepositoryImpl @Inject constructor(
             ), pagingSourceFactory = {
                 ExercisesPagingSource(apiService)
             }
-        ).liveData
+        ).flow.flowOn(Dispatchers.IO)
     }
 
-    override fun getBodyParts(): LiveData<RequestState<List<String>>> {
-        return liveData {
+    override fun getBodyParts(): Flow<RequestState<List<String>>> {
+        return flow {
             emit(RequestState.Loading)
             try {
                 val data = apiService.getBodyParts(15)
@@ -54,7 +53,7 @@ class FitRepositoryImpl @Inject constructor(
         }
     }
 
-    override fun byBodyParts(part: String): LiveData<PagingData<Exercises>> {
+    override fun byBodyParts(part: String): Flow<PagingData<Exercises>> {
         return Pager(
             config = PagingConfig(
                 pageSize = 1,
@@ -66,6 +65,6 @@ class FitRepositoryImpl @Inject constructor(
             pagingSourceFactory = {
                 ByBodyPartExerciesPagingSource(part, apiService)
             }
-        ).liveData
+        ).flow.flowOn(Dispatchers.IO)
     }
 }
