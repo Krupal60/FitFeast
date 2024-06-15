@@ -1,5 +1,6 @@
 package com.fit.feast.data.workouts.repository
 
+import android.util.Log
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
@@ -58,7 +59,9 @@ class FitRepositoryImpl(
         return flow {
             emit(RequestState.Loading)
             try {
-                val data = apiService.getTargetList(25)
+                Log.d("TAG", "error")
+                val data = apiService.getTargetList()
+                Log.d("data",data.body().toString())
                 when (data.code()) {
                     200 -> {
                         emit(RequestState.Success(data.body()!!))

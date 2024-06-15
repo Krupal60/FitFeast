@@ -28,7 +28,7 @@ class TargetMuscleWorkoutViewModel @Inject constructor(
 
     fun getData(targetMuscle: String) {
         viewModelScope.launch {
-            WorkoutByTargetUseCase.execute(targetMuscle).catch { }
+          val flow =  WorkoutByTargetUseCase.execute(targetMuscle).catch { }
                 .map { value: PagingData<Exercises> ->
                     value.map {
                         Exercises(
@@ -39,6 +39,7 @@ class TargetMuscleWorkoutViewModel @Inject constructor(
                     }
 
                 }.cachedIn(viewModelScope)
+            _data.value = flow
         }
     }
 

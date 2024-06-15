@@ -38,7 +38,6 @@ class BodyPartWorkoutFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentBodyPartWorkoutBinding.inflate(inflater, container, false)
-        Log.d("TAG", "onViewCreated: ${args.bodyPart}")
         viewModel.getData(args.bodyPart)
         bodyPartWorkoutAdapter = BodyPartWorkoutAdapter{
             findNavController().navigate(R.id.action_bodyPartWorkoutFragment_to_workOutDetailFragment)

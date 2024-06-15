@@ -46,7 +46,7 @@ class ByBodyPartsFragment : Fragment() {
             recyclerView.layoutManager = GridLayoutManager(requireContext(),2,GridLayoutManager.VERTICAL,false)
             recyclerView.itemAnimator = DefaultItemAnimator()
             viewLifecycleOwner.lifecycleScope.launch {
-                viewModel.bodyParts.collect{requestState ->
+                viewModel.bodyParts.collect{ requestState ->
                     when(requestState){
                         is RequestState.Error -> {
                             recyclerView.visibility = View.GONE

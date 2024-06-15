@@ -2,12 +2,15 @@ package com.fit.feast.presentation.screens
 
 import androidx.fragment.app.viewModels
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.fit.feast.R
 import com.fit.feast.databinding.FragmentByTargetsBinding
 import com.fit.feast.presentation.adapters.ByBodyPartsAdapter
@@ -39,8 +42,10 @@ class ByTargetsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
+            recyclerView.layoutManager = LinearLayoutManager(requireContext())
+            recyclerView.itemAnimator = DefaultItemAnimator()
             viewLifecycleOwner.lifecycleScope.launch {
-                viewModel.data.collectLatest {value: RequestState<List<String>> ->
+                viewModel.data.collectLatest { value: RequestState<List<String>> ->
                     when(value){
                         is RequestState.Error -> {
                             recyclerView.visibility = View.GONE

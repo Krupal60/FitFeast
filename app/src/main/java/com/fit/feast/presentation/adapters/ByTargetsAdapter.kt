@@ -9,7 +9,7 @@ class ByTargetsAdapter(private val byTargets: List<String>, private val cardClic
     class ViewHolder(val binding: ByTargetMuscleListBinding): RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-  val binding = ByTargetMuscleListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ByTargetMuscleListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
@@ -19,13 +19,12 @@ class ByTargetsAdapter(private val byTargets: List<String>, private val cardClic
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val data = byTargets[position]
-        holder.binding.apply {
-            targetMuscle.text = data
-            cardView.setOnClickListener {
+            holder.binding.targetMuscle.text = data
+            holder.binding.cardView.setOnClickListener {
                 cardClick(data)
-                cardView.isEnabled = false
+                holder.binding.cardView.isEnabled = false
             }
-        }
+
     }
 
 }
