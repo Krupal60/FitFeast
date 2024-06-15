@@ -31,7 +31,6 @@ class BodyPartWorkoutViewModel@Inject constructor(private val getWorkoutByBodyPa
                Log.e("error", it.message.toString())
             }.map {value: PagingData<Exercises> ->
                 value.map {
-                    Log.e("data", it.toString())
                     Exercises(name = it.name, id = it.id , bodyPart = it.bodyPart,
                         instructions = it.instructions, secondaryMuscles = it.secondaryMuscles,
                         gifUrl = it.gifUrl, equipment = it.equipment, target = it.target)

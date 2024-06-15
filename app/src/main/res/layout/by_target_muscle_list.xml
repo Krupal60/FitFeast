@@ -40,7 +40,7 @@
 <!--                android:tint="?attr/colorSurfaceInverse" />-->
 
             <TextView
-                android:id="@+id/bodyPart"
+                android:id="@+id/targetMuscle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="8dp"

@@ -2,6 +2,7 @@ package com.fit.feast.di
 
 import com.fit.feast.data.workouts.repository.FitRepositoryImpl
 import com.fit.feast.data.workouts.usecases.GetBodyPartsUseCaseImpl
+import com.fit.feast.data.workouts.usecases.GetTargetListUseCaseImpl
 import com.fit.feast.data.workouts.usecases.GetWorkoutByBodyPartUseCaseImpl
 import com.fit.feast.data.workouts.usecases.GetWorkoutUseCaseImpl
 import com.fit.feast.network.workouts.FitnessApiService
@@ -70,6 +71,10 @@ object RetrofitModule {
     @Provides
     fun provideGetBodyPartsUseCase(workoutRepository: FitRepositoryImpl): GetBodyPartsUseCaseImpl =
         GetBodyPartsUseCaseImpl(workoutRepository)
+   @Singleton
+    @Provides
+    fun provideGetTragetListUseCase(workoutRepository: FitRepositoryImpl): GetTargetListUseCaseImpl =
+       GetTargetListUseCaseImpl(workoutRepository)
 
 
 }

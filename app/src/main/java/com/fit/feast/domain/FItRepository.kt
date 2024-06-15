@@ -9,5 +9,7 @@ import kotlinx.coroutines.flow.Flow
 interface FItRepository {
     fun getDataAll(): Flow<PagingData<Exercises>>
     fun getBodyParts(): Flow<RequestState<List<String>>>
+    fun getTargetList(): Flow<RequestState<List<String>>>
     fun byBodyParts(bodyPart: String): Flow<PagingData<Exercises>>
+    fun byTargetMuscle(targetMuscle: String): Flow<PagingData<Exercises>>
 }

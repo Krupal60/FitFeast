@@ -6,6 +6,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.fit.feast.data.workouts.pagingsource.ByBodyPartExerciesPagingSource
 import com.fit.feast.data.workouts.Exercises
+import com.fit.feast.data.workouts.pagingsource.ByTargetMuscleExerciesPagingSource
 import com.fit.feast.data.workouts.pagingsource.ExercisesPagingSource
 import com.fit.feast.domain.FItRepository
 import com.fit.feast.network.workouts.FitnessApiService
@@ -54,8 +55,27 @@ class FitRepositoryImpl(
         }.flowOn(Dispatchers.IO)
     }
 
+    override fun getTargetList(): Flow<RequestState<List<String>>> {
+        return flow {
+            emit(RequestState.Loading)
+            try {
+                val data = apiService.getTargetList(25)
+                when (data.code()) {
+                    200 -> {
+                        emit(RequestState.Success(data.body()!!))
+                    }
+                    else -> {
+                        emit(RequestState.Error("Unexpected Error"))
+                    }
+                }
+            } catch (e: Exception) {
+                emit(RequestState.Error("Unexpected Error"))
+            }
+
+        }.flowOn(Dispatchers.IO)
+    }
+
     override fun byBodyParts(bodyPart: String): Flow<PagingData<Exercises>> {
-        Log.d("TAG", "Creating Pager for bodyPart: $bodyPart")
         return Pager(
             config = PagingConfig(
                 pageSize = 1,
@@ -64,6 +84,19 @@ class FitRepositoryImpl(
                 initialLoadSize = 1
             ), pagingSourceFactory = {
             ByBodyPartExerciesPagingSource(bodyPart,apiService)
+            }
+        ).flow.flowOn(Dispatchers.IO)
+    }
+
+    override fun byTargetMuscle(targetMuscle: String): Flow<PagingData<Exercises>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = 1,
+                prefetchDistance = 5,
+                enablePlaceholders = false,
+                initialLoadSize = 1
+            ), pagingSourceFactory = {
+                ByTargetMuscleExerciesPagingSource(targetMuscle,apiService)
             }
         ).flow.flowOn(Dispatchers.IO)
     }

@@ -117,7 +117,19 @@
         android:id="@+id/byTargetsFragment"
         android:name="com.fit.feast.presentation.screens.ByTargetsFragment"
         android:label="fragment_by_targets"
-        tools:layout="@layout/fragment_by_targets" />
+        tools:layout="@layout/fragment_by_targets" >
+        <action
+            android:id="@+id/action_byTargetsFragment_to_targetMuscleWorkoutFragment"
+            app:destination="@id/targetMuscleWorkoutFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/byTargetsFragment"
+            />
+
+    </fragment>
     <fragment
         android:id="@+id/workOutDetailFragment"
         android:name="com.fit.feast.presentation.screens.WorkOutDetailFragment"
@@ -140,6 +152,15 @@
             />
         <argument
             android:name="body_part"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/targetMuscleWorkoutFragment"
+        android:name="com.fit.feast.presentation.screens.TargetMuscleWorkoutFragment"
+        android:label="fragment_target_muscle_workout"
+        tools:layout="@layout/fragment_target_muscle_workout" >
+        <argument
+            android:name="target_muscle"
             app:argType="string" />
     </fragment>
 </navigation>

@@ -28,7 +28,7 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="0dp"
-                android:id="@+id/tilte"
+                android:id="@+id/title"
                 style="@android:style/TextAppearance.Material.Widget.ActionBar.Title"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/_16ssp"

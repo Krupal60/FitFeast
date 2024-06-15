@@ -16,4 +16,5 @@
     <string name="target_muscle">Target Muscle</string>
     <string name="retry">Retry</string>
     <string name="something_went_wrong_try_again">Something went wrong, try again</string>
+    <string name="something_went_wrong_try_again_later">Something went wrong, try again later</string>
 </resources>

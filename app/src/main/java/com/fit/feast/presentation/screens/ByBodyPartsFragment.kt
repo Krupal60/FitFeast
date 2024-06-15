@@ -50,7 +50,6 @@ class ByBodyPartsFragment : Fragment() {
                     when(requestState){
                         is RequestState.Error -> {
                             recyclerView.visibility = View.GONE
-                            retry.visibility = View.VISIBLE
                             progressBar.visibility = View.GONE
                             errorText.visibility = View.VISIBLE
                         }
@@ -60,7 +59,6 @@ class ByBodyPartsFragment : Fragment() {
                         }
                         is RequestState.Success -> {
                             progressBar.visibility = View.GONE
-                            retry.visibility = View.GONE
                             errorText.visibility = View.GONE
                             recyclerView.adapter = ByBodyPartsAdapter(requestState.data){
                                 val action = ByBodyPartsFragmentDirections.actionByBodyPartsFragmentToBodyPartWorkoutFragment(it)

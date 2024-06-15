@@ -58,7 +58,7 @@ class BodyPartWorkoutFragment : Fragment() {
         }
 
         binding.apply {
-            tilte.text = "By ${args.bodyPart}"
+            title.text = "Workouts by ${args.bodyPart} part"
 
             bodyPartWorkoutAdapter.addLoadStateListener { loadState ->
                 when (loadState.refresh) {

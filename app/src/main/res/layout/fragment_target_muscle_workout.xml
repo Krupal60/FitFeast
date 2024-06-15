@@ -4,7 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.screens.ByBodyPartsFragment">
+        tools:context=".presentation.screens.TargetMuscleWorkoutFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout3"
@@ -28,9 +28,9 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="0dp"
+                android:id="@+id/title"
                 style="@android:style/TextAppearance.Material.Widget.ActionBar.Title"
                 android:layout_height="wrap_content"
-                android:text="@string/by_body_parts"
                 android:textSize="@dimen/_16ssp"
                 android:paddingHorizontal="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -55,7 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
-            android:text="@string/something_went_wrong_try_again_later"
+            android:text="@string/something_went_wrong_try_again"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -86,3 +86,4 @@
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
