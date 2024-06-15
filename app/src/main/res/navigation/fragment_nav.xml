@@ -97,7 +97,17 @@
         android:id="@+id/byBodyPartsFragment"
         android:name="com.fit.feast.presentation.screens.ByBodyPartsFragment"
         android:label="fragment_by_body_parts"
-        tools:layout="@layout/fragment_by_body_parts" />
+        tools:layout="@layout/fragment_by_body_parts" >
+        <action
+            android:id="@+id/action_byBodyPartsFragment_to_bodyPartWorkoutFragment"
+            app:destination="@id/bodyPartWorkoutFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/byBodyPartsFragment"/>
+    </fragment>
     <fragment
         android:id="@+id/byEquipmentsFragment"
         android:name="com.fit.feast.presentation.screens.ByEquipmentsFragment"
@@ -110,7 +120,26 @@
         tools:layout="@layout/fragment_by_targets" />
     <fragment
         android:id="@+id/workOutDetailFragment"
-        android:name="com.fit.feast.WorkOutDetailFragment"
+        android:name="com.fit.feast.presentation.screens.WorkOutDetailFragment"
         android:label="fragment_work_out_detail"
         tools:layout="@layout/fragment_work_out_detail" />
+    <fragment
+        android:id="@+id/bodyPartWorkoutFragment"
+        android:name="com.fit.feast.presentation.screens.BodyPartWorkoutFragment"
+        android:label="fragment_body_part_workout"
+        tools:layout="@layout/fragment_body_part_workout" >
+        <action
+            android:id="@+id/action_bodyPartWorkoutFragment_to_workOutDetailFragment"
+            app:destination="@id/workOutDetailFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/bodyPartWorkoutFragment"
+            />
+        <argument
+            android:name="body_part"
+            app:argType="string" />
+    </fragment>
 </navigation>

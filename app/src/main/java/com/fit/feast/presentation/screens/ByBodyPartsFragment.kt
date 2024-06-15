@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.fit.feast.R
 import com.fit.feast.databinding.FragmentByBodyPartsBinding
 import com.fit.feast.presentation.adapters.ByBodyPartsAdapter
 import com.fit.feast.presentation.viewmodel.ByBodyPartsViewModel
@@ -40,6 +41,7 @@ class ByBodyPartsFragment : Fragment() {
         binding.apply {
             backButton.setOnClickListener {
                 findNavController().popBackStack()
+                backButton.isEnabled = false
             }
             recyclerView.layoutManager = GridLayoutManager(requireContext(),2,GridLayoutManager.VERTICAL,false)
             recyclerView.itemAnimator = DefaultItemAnimator()
@@ -60,7 +62,10 @@ class ByBodyPartsFragment : Fragment() {
                             progressBar.visibility = View.GONE
                             retry.visibility = View.GONE
                             errorText.visibility = View.GONE
-                            recyclerView.adapter = ByBodyPartsAdapter(requestState.data)
+                            recyclerView.adapter = ByBodyPartsAdapter(requestState.data){
+                                val action = ByBodyPartsFragmentDirections.actionByBodyPartsFragmentToBodyPartWorkoutFragment(it)
+                                findNavController().navigate(action)
+                            }
                             recyclerView.visibility = View.VISIBLE
 
                         }

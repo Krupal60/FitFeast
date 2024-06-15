@@ -6,8 +6,9 @@ import com.fit.feast.data.workouts.Exercises
 import com.fit.feast.network.workouts.FitnessApiService
 import java.io.IOException
 
-class ByBodyPartExerciesPagingSource(val part: String, val apiService: FitnessApiService) :
+class ByBodyPartExerciesPagingSource(private val bodyPart: String, private val apiService: FitnessApiService) :
     PagingSource<Int, Exercises>() {
+
     override fun getRefreshKey(state: PagingState<Int, Exercises>): Int? {
         return state.anchorPosition?.let {
             state.closestPageToPosition(it)?.prevKey?.plus(1)
@@ -18,7 +19,7 @@ class ByBodyPartExerciesPagingSource(val part: String, val apiService: FitnessAp
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Exercises> {
         return try {
             val currentPage = params.key ?: 1
-            val data = apiService.byBodyParts(bodyPart = part, 15, currentPage)
+            val data = apiService.byBodyParts(url = "/exercises/bodyPart/$bodyPart",limit = 15, page = currentPage)
             LoadResult.Page(
                 data = data.body()!!, prevKey = if (currentPage == 1) null else currentPage - 1,
                 nextKey = if (data.body()!!.isEmpty()) null else currentPage + 1

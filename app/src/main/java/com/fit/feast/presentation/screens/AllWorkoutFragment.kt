@@ -82,6 +82,7 @@ class AllWorkoutFragment : Fragment() {
         }
         backButton.setOnClickListener {
             findNavController().popBackStack()
+            backButton.isEnabled = false
         }
 
         recyclerView.layoutManager =

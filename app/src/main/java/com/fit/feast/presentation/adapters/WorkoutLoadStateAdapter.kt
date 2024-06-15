@@ -26,7 +26,8 @@ class WorkoutLoadStateAdapter(private val retry: () -> Unit) :
 
         fun bind(loadState: LoadState) {
             binding.retry.setOnClickListener {
-                retry.invoke()
+                retry()
+                binding.retry.isEnabled = false
             }
             binding.apply {
 

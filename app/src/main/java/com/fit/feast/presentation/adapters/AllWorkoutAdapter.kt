@@ -32,6 +32,7 @@ class AllWorkoutAdapter(private val onCardClick :(Exercises) -> Unit) :
             binding.apply {
                 cardView.setOnClickListener {
                     onCardClick(item)
+                    cardView.isEnabled = false
                 }
                 exerciseName.text = item.name
                 equipment.text = "Equipment: ${item.equipment}"

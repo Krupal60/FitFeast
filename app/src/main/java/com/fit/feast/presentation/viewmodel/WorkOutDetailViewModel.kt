@@ -1,4 +1,4 @@
-package com.fit.feast
+package com.fit.feast.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 

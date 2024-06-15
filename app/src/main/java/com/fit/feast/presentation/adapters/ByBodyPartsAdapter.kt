@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.fit.feast.R
 import com.fit.feast.databinding.ByBodyPartsListBinding
 
-class ByBodyPartsAdapter (private val byBodyPartsList: List<String>): RecyclerView.Adapter<ByBodyPartsAdapter.ViewHolder>() {
+class ByBodyPartsAdapter (private val byBodyPartsList: List<String>, private val cardviewClick: (String) -> Unit): RecyclerView.Adapter<ByBodyPartsAdapter.ViewHolder>() {
      class ViewHolder(val binding : ByBodyPartsListBinding): RecyclerView.ViewHolder(binding.root)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ByBodyPartsListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -76,7 +76,10 @@ class ByBodyPartsAdapter (private val byBodyPartsList: List<String>): RecyclerVi
                 R.drawable.human_workout
             }
         }
-
+            holder.binding.cardView.setOnClickListener {
+                cardviewClick(byBodyParts)
+                holder.binding.cardView.isEnabled = false
+            }
             holder.binding.bodyPart.text = byBodyParts
             holder.binding.exerciseImage.setImageResource( id)
         }
