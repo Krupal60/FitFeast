@@ -1,4 +1,4 @@
-package com.fit.feast.presentation
+package com.fit.feast.presentation.activity
 
 import android.os.Bundle
 import android.view.View

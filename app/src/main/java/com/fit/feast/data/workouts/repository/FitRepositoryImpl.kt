@@ -1,14 +1,13 @@
 package com.fit.feast.data.workouts.repository
 
-import android.util.Log
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.fit.feast.data.workouts.pagingsource.ByBodyPartExerciesPagingSource
 import com.fit.feast.data.workouts.Exercises
+import com.fit.feast.data.workouts.pagingsource.ByBodyPartExerciesPagingSource
 import com.fit.feast.data.workouts.pagingsource.ByTargetMuscleExerciesPagingSource
 import com.fit.feast.data.workouts.pagingsource.ExercisesPagingSource
-import com.fit.feast.domain.FItRepository
+import com.fit.feast.domain.repository.FItRepository
 import com.fit.feast.network.workouts.FitnessApiService
 import com.fit.feast.util.RequestState
 import kotlinx.coroutines.Dispatchers
@@ -20,7 +19,7 @@ class FitRepositoryImpl(
     private val apiService: FitnessApiService
 ) : FItRepository {
 
-    override fun getDataAll(): Flow<PagingData<Exercises>> {
+    override suspend fun getDataAll(): Flow<PagingData<Exercises>> {
         return Pager(
             config = PagingConfig(
                 pageSize = 1,
@@ -34,7 +33,7 @@ class FitRepositoryImpl(
         ).flow.flowOn(Dispatchers.IO)
     }
 
-    override fun getBodyParts(): Flow<RequestState<List<String>>> {
+    override suspend fun getBodyParts(): Flow<RequestState<List<String>>> {
         return flow {
             emit(RequestState.Loading)
             try {
@@ -55,7 +54,7 @@ class FitRepositoryImpl(
         }.flowOn(Dispatchers.IO)
     }
 
-    override fun getTargetList(): Flow<RequestState<List<String>>> {
+    override suspend fun getTargetList(): Flow<RequestState<List<String>>> {
         return flow {
             emit(RequestState.Loading)
             try {
@@ -75,7 +74,7 @@ class FitRepositoryImpl(
         }.flowOn(Dispatchers.IO)
     }
 
-    override fun byBodyParts(bodyPart: String): Flow<PagingData<Exercises>> {
+    override suspend fun byBodyParts(bodyPart: String): Flow<PagingData<Exercises>> {
         return Pager(
             config = PagingConfig(
                 pageSize = 1,
@@ -88,7 +87,7 @@ class FitRepositoryImpl(
         ).flow.flowOn(Dispatchers.IO)
     }
 
-    override fun byTargetMuscle(targetMuscle: String): Flow<PagingData<Exercises>> {
+    override suspend fun byTargetMuscle(targetMuscle: String): Flow<PagingData<Exercises>> {
         return Pager(
             config = PagingConfig(
                 pageSize = 1,

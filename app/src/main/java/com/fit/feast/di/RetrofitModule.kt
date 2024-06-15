@@ -4,6 +4,7 @@ import com.fit.feast.data.workouts.repository.FitRepositoryImpl
 import com.fit.feast.data.workouts.usecases.GetBodyPartsUseCaseImpl
 import com.fit.feast.data.workouts.usecases.GetTargetListUseCaseImpl
 import com.fit.feast.data.workouts.usecases.GetWorkoutByBodyPartUseCaseImpl
+import com.fit.feast.data.workouts.usecases.GetWorkoutByTargetUseCaseImpl
 import com.fit.feast.data.workouts.usecases.GetWorkoutUseCaseImpl
 import com.fit.feast.network.workouts.FitnessApiService
 import com.fit.feast.util.FitApiConstants.Companion.BASE_URL
@@ -14,7 +15,6 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
-import okhttp3.Request
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
@@ -36,10 +36,11 @@ object RetrofitModule {
                 .writeTimeout(90, TimeUnit.SECONDS)
                 .connectTimeout(90, TimeUnit.SECONDS)
                 .addInterceptor {
-                    val request: Request.Builder = it.request().newBuilder()
-                    request.addHeader("X-RapidAPI-Key", X_RapidAPI_Key)
-                    request.addHeader("X-RapidAPI-Host", X_RapidAPI_Host)
-                    return@addInterceptor it.proceed(request.build())
+                    val request = it.request().newBuilder()
+                    .addHeader("X-RapidAPI-Key", X_RapidAPI_Key)
+                    .addHeader("X-RapidAPI-Host", X_RapidAPI_Host)
+                    .build()
+                   it.proceed(request)
                 }
                 .build())
             .addConverterFactory(GsonConverterFactory.create())
@@ -71,11 +72,16 @@ object RetrofitModule {
     @Provides
     fun provideGetBodyPartsUseCase(workoutRepository: FitRepositoryImpl): GetBodyPartsUseCaseImpl =
         GetBodyPartsUseCaseImpl(workoutRepository)
+
    @Singleton
     @Provides
     fun provideGetTragetListUseCase(workoutRepository: FitRepositoryImpl): GetTargetListUseCaseImpl =
        GetTargetListUseCaseImpl(workoutRepository)
 
+    @Singleton
+    @Provides
+    fun provideGetWorkoutByTargetUseCase(workoutRepository: FitRepositoryImpl): GetWorkoutByTargetUseCaseImpl =
+        GetWorkoutByTargetUseCaseImpl(workoutRepository)
 
 }
 
