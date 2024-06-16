@@ -1,4 +1,4 @@
-package com.fit.feast.presentation.adapters
+package com.fit.feast.presentation.adapters.footer
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,8 +8,8 @@ import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.fit.feast.databinding.LoadStateScreenBinding
 
-class WorkoutLoadStateAdapter(private val retry: () -> Unit) :
-    LoadStateAdapter<WorkoutLoadStateAdapter.LoadStateViewHolder>() {
+class LoadStateFooterAdapter(private val retry: () -> Unit) :
+    LoadStateAdapter<LoadStateFooterAdapter.LoadStateViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, loadState: LoadState): LoadStateViewHolder {
         val binding =

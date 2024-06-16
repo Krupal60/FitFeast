@@ -30,11 +30,13 @@ interface FitnessApiService {
 
     @GET(FitApiConstants.targetList)
     suspend fun getTargetList(): Response<List<String>>
-
     @GET
     suspend fun byTargetMuscle(
         @Url url : String,
         @Query("limit") limit : Int,
         @Query("offset") page : Int
     ): Response<List<Exercises>>
+
+    @GET(FitApiConstants.equipmentList)
+    suspend fun getEquipmentList(): Response<List<String>>
 }

@@ -1,32 +1,28 @@
 package com.fit.feast.presentation.screens
 
-import androidx.fragment.app.viewModels
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.fit.feast.R
-import com.fit.feast.presentation.viewmodel.WorkOutDetailViewModel
+import androidx.fragment.app.Fragment
+import com.fit.feast.databinding.FragmentWorkOutDetailBinding
 
 class WorkOutDetailFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = WorkOutDetailFragment()
-    }
-
-    private val viewModel: WorkOutDetailViewModel by viewModels()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        // TODO: Use the ViewModel
-    }
+    private var _binding: FragmentWorkOutDetailBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_work_out_detail, container, false)
+        _binding = FragmentWorkOutDetailBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

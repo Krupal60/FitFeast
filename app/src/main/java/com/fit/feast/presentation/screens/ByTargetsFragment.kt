@@ -2,7 +2,6 @@ package com.fit.feast.presentation.screens
 
 import androidx.fragment.app.viewModels
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,10 +10,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.fit.feast.R
 import com.fit.feast.databinding.FragmentByTargetsBinding
-import com.fit.feast.presentation.adapters.ByBodyPartsAdapter
-import com.fit.feast.presentation.adapters.ByTargetsAdapter
+import com.fit.feast.presentation.adapters.ByItemAdapter
 import com.fit.feast.presentation.viewmodel.ByTargetsViewModel
 import com.fit.feast.util.RequestState
 import dagger.hilt.android.AndroidEntryPoint
@@ -59,7 +56,7 @@ class ByTargetsFragment : Fragment() {
                         is RequestState.Success -> {
                             progressBar.visibility = View.GONE
                             errorText.visibility = View.GONE
-                            recyclerView.adapter = ByTargetsAdapter(value.data){
+                            recyclerView.adapter = ByItemAdapter(value.data){
                                 val action = ByTargetsFragmentDirections.actionByTargetsFragmentToTargetMuscleWorkoutFragment(it)
                                 findNavController().navigate(action)
                             }

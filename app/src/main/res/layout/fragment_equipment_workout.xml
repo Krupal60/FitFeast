@@ -4,7 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.screens.ByTargetsFragment">
+        tools:context=".presentation.screens.EquipmentWorkoutFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout3"
@@ -28,9 +28,9 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="0dp"
+                android:id="@+id/title"
                 style="@android:style/TextAppearance.Material.Widget.ActionBar.Title"
                 android:layout_height="wrap_content"
-                android:text="@string/by_target"
                 android:textSize="@dimen/_16ssp"
                 android:paddingHorizontal="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -55,7 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
-            android:text="@string/something_went_wrong_try_again"
+            android:text="@string/something_went_wrong_try_again_later"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -78,7 +78,7 @@
             android:layout_height="0dp"
             android:layout_marginBottom="5dp"
             android:visibility="gone"
-            tools:listitem="@layout/list_layout"
+            tools:listitem="@layout/by_body_parts_list"
             tools:itemCount="2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

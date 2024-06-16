@@ -1,11 +1,11 @@
 package com.fit.feast.data.workouts.repository
 
-import android.util.Log
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.fit.feast.data.workouts.Exercises
 import com.fit.feast.data.workouts.pagingsource.ByBodyPartExerciesPagingSource
+import com.fit.feast.data.workouts.pagingsource.ByEquipmentExerciesPagingSource
 import com.fit.feast.data.workouts.pagingsource.ByTargetMuscleExerciesPagingSource
 import com.fit.feast.data.workouts.pagingsource.ExercisesPagingSource
 import com.fit.feast.domain.repository.FItRepository
@@ -59,9 +59,27 @@ class FitRepositoryImpl(
         return flow {
             emit(RequestState.Loading)
             try {
-                Log.d("TAG", "error")
                 val data = apiService.getTargetList()
-                Log.d("data",data.body().toString())
+                when (data.code()) {
+                    200 -> {
+                        emit(RequestState.Success(data.body()!!))
+                    }
+                    else -> {
+                        emit(RequestState.Error("Unexpected Error"))
+                    }
+                }
+            } catch (e: Exception) {
+                emit(RequestState.Error("Unexpected Error"))
+            }
+
+        }.flowOn(Dispatchers.IO)
+    }
+
+    override suspend fun getEquipmentsList(): Flow<RequestState<List<String>>> {
+        return flow {
+            emit(RequestState.Loading)
+            try {
+                val data = apiService.getEquipmentList()
                 when (data.code()) {
                     200 -> {
                         emit(RequestState.Success(data.body()!!))
@@ -88,6 +106,17 @@ class FitRepositoryImpl(
             ByBodyPartExerciesPagingSource(bodyPart,apiService)
             }
         ).flow.flowOn(Dispatchers.IO)
+    }
+
+    override suspend fun byEquipment(equipment: String): Flow<PagingData<Exercises>> {
+        return Pager(config = PagingConfig(
+            pageSize = 1,
+            prefetchDistance = 5,
+            enablePlaceholders = false,
+            initialLoadSize = 1
+        ), pagingSourceFactory = {
+            ByEquipmentExerciesPagingSource(equipment,apiService)
+        }).flow.flowOn(Dispatchers.IO)
     }
 
     override suspend fun byTargetMuscle(targetMuscle: String): Flow<PagingData<Exercises>> {

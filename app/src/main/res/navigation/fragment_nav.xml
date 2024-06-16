@@ -92,6 +92,7 @@
             app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:popUpTo="@id/allWorkoutFragment"
            />
+
     </fragment>
     <fragment
         android:id="@+id/byBodyPartsFragment"
@@ -112,7 +113,18 @@
         android:id="@+id/byEquipmentsFragment"
         android:name="com.fit.feast.presentation.screens.ByEquipmentsFragment"
         android:label="fragment_by_equipments"
-        tools:layout="@layout/fragment_by_equipments" />
+        tools:layout="@layout/fragment_by_equipments" >
+        <action
+            android:id="@+id/action_byEquipmentsFragment_to_equipmentWorkoutFragment"
+            app:destination="@id/equipmentWorkoutFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/byEquipmentsFragment"
+            />
+    </fragment>
     <fragment
         android:id="@+id/byTargetsFragment"
         android:name="com.fit.feast.presentation.screens.ByTargetsFragment"
@@ -134,7 +146,11 @@
         android:id="@+id/workOutDetailFragment"
         android:name="com.fit.feast.presentation.screens.WorkOutDetailFragment"
         android:label="fragment_work_out_detail"
-        tools:layout="@layout/fragment_work_out_detail" />
+        tools:layout="@layout/fragment_work_out_detail" >
+        <argument android:name="Excercises"
+            app:argType="com.fit.feast.data.workouts.Exercises" />
+
+    </fragment>
     <fragment
         android:id="@+id/bodyPartWorkoutFragment"
         android:name="com.fit.feast.presentation.screens.BodyPartWorkoutFragment"
@@ -162,5 +178,35 @@
         <argument
             android:name="target_muscle"
             app:argType="string" />
+        <action
+            android:id="@+id/action_targetMuscleWorkoutFragment_to_workOutDetailFragment"
+            app:destination="@id/workOutDetailFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/targetMuscleWorkoutFragment"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/equipmentWorkoutFragment"
+        android:name="com.fit.feast.presentation.screens.EquipmentWorkoutFragment"
+        android:label="fragment_equipment_workout"
+        tools:layout="@layout/fragment_equipment_workout" >
+        <action
+            android:id="@+id/action_equipmentWorkoutFragment_to_workOutDetailFragment"
+            app:destination="@id/workOutDetailFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/equipmentWorkoutFragment"
+            />
+        <argument
+            android:name="Equipment"
+            app:argType="string"
+            app:nullable="true" />
     </fragment>
 </navigation>
