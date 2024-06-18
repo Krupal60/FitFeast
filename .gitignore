@@ -52,3 +52,4 @@ util/FitApiConstants.kt
 /app/src/main/res/drawable/recipe_selected.xml
 /app/src/main/res/drawable/workout.xml
 /app/src/main/res/drawable/workout_selected.xml
+/app/src/main/java/com/fit/feast/util/RecipeApiConstants.kt

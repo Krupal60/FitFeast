@@ -9,7 +9,7 @@ import com.fit.feast.data.workouts.pagingsource.ByEquipmentExerciesPagingSource
 import com.fit.feast.data.workouts.pagingsource.ByNameExcerciesPagingSource
 import com.fit.feast.data.workouts.pagingsource.ByTargetMuscleExerciesPagingSource
 import com.fit.feast.data.workouts.pagingsource.ExercisesPagingSource
-import com.fit.feast.domain.repository.FItRepository
+import com.fit.feast.domain.repository.workouts.FItRepository
 import com.fit.feast.network.workouts.FitnessApiService
 import com.fit.feast.util.RequestState
 import kotlinx.coroutines.Dispatchers

@@ -1,4 +1,4 @@
-package com.fit.feast.di
+package com.fit.feast.di.workouts
 
 import com.fit.feast.data.workouts.repository.FitRepositoryImpl
 import com.fit.feast.data.workouts.usecases.GetBodyPartsUseCaseImpl

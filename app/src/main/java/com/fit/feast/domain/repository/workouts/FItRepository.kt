@@ -1,4 +1,4 @@
-package com.fit.feast.domain.repository
+package com.fit.feast.domain.repository.workouts
 
 import androidx.paging.PagingData
 import com.fit.feast.data.workouts.Exercises
