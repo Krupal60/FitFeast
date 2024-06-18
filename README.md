@@ -15,7 +15,7 @@ Technologies Used:
 MVVM architecture for scalable and maintainable code structure.
 Kotlin programming language for Android app development.
 Retrofit for handling RESTful APIs to fetch workout and recipe data.
-Dagger3 for dependency injection to improve code modularity and testability.
+hilt for dependency injection to improve code modularity and testability.
 Paging3 for efficient pagination of workout and recipe lists.
 
 User-Friendly Interface:

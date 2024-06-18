@@ -42,8 +42,7 @@ class ByEquipmentsFragment : Fragment() {
                 findNavController().popBackStack()
                 backButton.isEnabled = false
             }
-            recyclerView.layoutManager = GridLayoutManager(requireContext(),2,
-                GridLayoutManager.VERTICAL,false)
+            recyclerView.layoutManager = GridLayoutManager(requireContext(),2,GridLayoutManager.VERTICAL,false)
             recyclerView.itemAnimator = DefaultItemAnimator()
             viewLifecycleOwner.lifecycleScope.launch {
                 viewModel.data.collect{ requestState ->

@@ -12,6 +12,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.paging.LoadState
 import androidx.paging.PagingData
 import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fit.feast.data.workouts.Exercises
 import com.fit.feast.databinding.FragmentTargetMuscleWorkoutBinding
@@ -91,7 +92,8 @@ class TargetMuscleWorkoutFragment : Fragment() {
 
 
             title.text  = "Workout by ${args.targetMuscle} muscle"
-            recyclerView.layoutManager = LinearLayoutManager(requireContext())
+            recyclerView.layoutManager = GridLayoutManager(requireContext(),2,
+                GridLayoutManager.VERTICAL,false)
             recyclerView.itemAnimator = DefaultItemAnimator()
             recyclerView.adapter = adapter.withLoadStateFooter(LoadStateFooterAdapter{
                 adapter.retry()

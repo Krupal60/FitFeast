@@ -6,6 +6,7 @@ import androidx.paging.PagingData
 import com.fit.feast.data.workouts.Exercises
 import com.fit.feast.data.workouts.pagingsource.ByBodyPartExerciesPagingSource
 import com.fit.feast.data.workouts.pagingsource.ByEquipmentExerciesPagingSource
+import com.fit.feast.data.workouts.pagingsource.ByNameExcerciesPagingSource
 import com.fit.feast.data.workouts.pagingsource.ByTargetMuscleExerciesPagingSource
 import com.fit.feast.data.workouts.pagingsource.ExercisesPagingSource
 import com.fit.feast.domain.repository.FItRepository
@@ -30,6 +31,20 @@ class FitRepositoryImpl(
                 maxSize = 1300
             ), pagingSourceFactory = {
                 ExercisesPagingSource(apiService)
+            }
+        ).flow.flowOn(Dispatchers.IO)
+    }
+
+    override suspend fun getDataByName(name: String): Flow<PagingData<Exercises>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = 1,
+                prefetchDistance = 5,
+                enablePlaceholders = false,
+                initialLoadSize = 1
+            ),
+            pagingSourceFactory = {
+                ByNameExcerciesPagingSource(apiService,name)
             }
         ).flow.flowOn(Dispatchers.IO)
     }

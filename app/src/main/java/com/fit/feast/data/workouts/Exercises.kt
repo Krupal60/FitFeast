@@ -2,8 +2,9 @@ package com.fit.feast.data.workouts
 
 import android.os.Parcel
 import android.os.Parcelable
+import javax.annotation.concurrent.Immutable
 
-
+@Immutable
 data class Exercises(
     val bodyPart: String,
     val equipment: String,

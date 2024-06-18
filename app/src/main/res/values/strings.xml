@@ -17,4 +17,8 @@
     <string name="retry">Retry</string>
     <string name="something_went_wrong_try_again">Something went wrong, try again</string>
     <string name="something_went_wrong_try_again_later">Something went wrong, try again later</string>
+    <string name="workout_detail">WorkOut Detail</string>
+    <string name="back_button">Back Button</string>
+    <string name="expand_button">Expand Button</string>
+    <string name="instructions">Instructions</string>
 </resources>
